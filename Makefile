@@ -10,13 +10,13 @@ CFLAGS := -Wall -Werror -g
 
 PAYLOAD_OBJS := $(wildcard payload_files/*.o)
 
-all: $(ELF) icon_svg.h
+all: $(ELF)
 
 LDADD := -lSceNotification
 
-SRCS := main.c util.c
+SRCS := main.c
 
-$(ELF): $(SRCS) $(PAYLOAD_OBJS) icon_svg.h
+$(ELF): $(SRCS) $(PAYLOAD_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(LDADD) $(SRCS) $(PAYLOAD_OBJS)
 	
 
@@ -24,4 +24,4 @@ test:
 	nc -q 0 192.168.0.134 9021 < $(ELF)
 
 clean:
-	rm -f $(ELF) icon_svg.h
+	rm -f $(ELF)
