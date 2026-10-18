@@ -38,6 +38,6 @@ jobs:
           gh release create latest \
             --title "Build ${{ steps.sha.outputs.short }}" \
             --notes "Automated build from commit ${{ github.sha }}" \
-            payload.elf \
+            ${GITHUB_REPOSITORY#*/}.elf \
         env:
           GH_TOKEN: ${{ github.token }}
